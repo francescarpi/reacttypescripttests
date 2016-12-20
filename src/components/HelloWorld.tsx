@@ -1,7 +1,7 @@
-import * as React from "react";
+import * as React from 'react'
 
-export function Hello () {
-  render() {
-    return <h1>Hello</h1>
-  }
+export interface HelloProps { name: string }
+
+export function Hello (props: HelloProps) {
+  return <h1>Hello {props.name}</h1>
 }

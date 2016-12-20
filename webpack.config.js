@@ -1,4 +1,5 @@
-var HtmlWebpackPlugin = require('html-webpack-plugin');
+var HtmlWebpackPlugin = require('html-webpack-plugin'),
+    ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   entry: './src/index.tsx',
@@ -18,7 +19,10 @@ module.exports = {
   module: {
     loaders: [
       // All files with a '.ts' or '.tsx' extension will be handled by 'awesome-typescript-loader'.
-      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' }
+      { test: /\.tsx?$/, loader: 'awesome-typescript-loader' },
+
+      // Less files
+      { test: /\.less$/, loader: 'less-loader'},
     ],
 
     preLoaders: [
@@ -32,8 +36,6 @@ module.exports = {
   // This is important because it allows us to avoid bundling all of our
   // dependencies, which allows browsers to cache those libraries between builds.
   externals: {
-    'react': 'React',
-    'react-dom': 'ReactDOM'
   },
 
   // Dev server settings
@@ -44,6 +46,7 @@ module.exports = {
 
   // Plugins
   plugins: [
+    // Preparing index.html
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       hash: false,
@@ -52,6 +55,10 @@ module.exports = {
         collapseWhitespace: true
       }
     }),
+
+    // Stylesheet
+    new ExtractTextPlugin('css/[name].css'),
+
   ],
 
 };
