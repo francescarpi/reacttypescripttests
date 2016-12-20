@@ -1,3 +1,5 @@
+var HtmlWebpackPlugin = require('html-webpack-plugin');
+
 module.exports = {
   entry: './src/index.tsx',
   output: {
@@ -39,5 +41,17 @@ module.exports = {
     publickPath: '/',
     historyApiFallback: true
   },
+
+  // Plugins
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: 'src/index.html',
+      hash: false,
+      inject: 'body',
+      minify: {
+        collapseWhitespace: true
+      }
+    }),
+  ],
 
 };

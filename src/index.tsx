@@ -1,14 +1,8 @@
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-
-
-function Test () {
-    return (
-        <div>Hello</div>
-    )
-}
+import { Hello } from './components/HelloWorld'
 
 ReactDOM.render(
-    <Test/>,
+    <Hello/>,
     document.getElementById('app')
 )
