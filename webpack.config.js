@@ -10,7 +10,9 @@ console.log('Build environment:'.green, `${process.env.BUILD_ENV}`.bold.red)
 console.log('Webpack environment:'.green, `${env}\n`.bold.red)
 
 module.exports = {
-  entry: './src/index.tsx',
+  entry: [
+    './src/index.tsx',
+  ],
   output: {
     filename: 'app.js',
     path: __dirname + '/dist',
